@@ -210,7 +210,7 @@ function edit_post( $post_data = null ) {
 				continue;
 			if ( $meta->post_id != $post_ID )
 				continue;
-			if ( is_protected_meta( $value['key'] ) )
+			if ( is_protected_meta( $value['key'], 'post' ) || ! current_user_can( 'edit_post_meta', $post_ID, $value['key'] ) )
 				continue;
 			update_meta( $key, $value['key'], $value['value'] );
 		}
@@ -222,7 +222,7 @@ function edit_post( $post_data = null ) {
 				continue;
 			if ( $meta->post_id != $post_ID )
 				continue;
-			if ( is_protected_meta( $meta->meta_key ) )
+			if ( is_protected_meta( $meta->meta_key, 'post' ) || ! current_user_can( 'delete_post_meta', $post_ID, $meta->meta_key ) )
 				continue;
 			delete_meta( $key );
 		}
@@ -667,30 +667,28 @@ function add_meta( $post_ID ) {
 
 	$metakeyselect = isset($_POST['metakeyselect']) ? stripslashes( trim( $_POST['metakeyselect'] ) ) : '';
 	$metakeyinput = isset($_POST['metakeyinput']) ? stripslashes( trim( $_POST['metakeyinput'] ) ) : '';
-	$metavalue = isset($_POST['metavalue']) ? maybe_serialize( stripslashes_deep( $_POST['metavalue'] ) ) : '';
-	if ( is_string($metavalue) )
+	$metavalue = isset($_POST['metavalue']) ? $_POST['metavalue'] : '';
+	if ( is_string( $metavalue ) )
 		$metavalue = trim( $metavalue );
 
-	if ( ('0' === $metavalue || !empty ( $metavalue ) ) && ((('#NONE#' != $metakeyselect) && !empty ( $metakeyselect) ) || !empty ( $metakeyinput) ) ) {
+	if ( ('0' === $metavalue || ! empty ( $metavalue ) ) && ( ( ( '#NONE#' != $metakeyselect ) && !empty ( $metakeyselect) ) || !empty ( $metakeyinput ) ) ) {
 		// We have a key/value pair. If both the select and the
 		// input for the key have data, the input takes precedence:
 
- 		if ('#NONE#' != $metakeyselect)
+ 		if ( '#NONE#' != $metakeyselect )
 			$metakey = $metakeyselect;
 
-		if ( $metakeyinput)
+		if ( $metakeyinput )
 			$metakey = $metakeyinput; // default
 
-		if ( is_protected_meta( $metakey ) )
+		if ( is_protected_meta( $metakey, 'post' ) || ! current_user_can( 'add_post_meta', $post_ID, $metakey ) )
 			return false;
 
-		wp_cache_delete($post_ID, 'post_meta');
-		$wpdb->insert( $wpdb->postmeta, array( 'post_id' => $post_ID, 'meta_key' => $metakey, 'meta_value' => $metavalue ) );
-		$meta_id = $wpdb->insert_id;
-		do_action( 'added_postmeta', $meta_id, $post_ID, $metakey, $metavalue );
+		$metakey = esc_sql( $metakey );
 
-		return $meta_id;
+		return add_post_meta( $post_ID, $metakey, $metavalue );
 	}
+
 	return false;
 } // add_meta
 
@@ -771,7 +769,6 @@ function has_meta( $postid ) {
 	return $wpdb->get_results( $wpdb->prepare("SELECT meta_key, meta_value, meta_id, post_id
 			FROM $wpdb->postmeta WHERE post_id = %d
 			ORDER BY meta_key,meta_id", $postid), ARRAY_A );
-
 }
 
 /**
@@ -788,9 +785,6 @@ function update_meta( $meta_id, $meta_key, $meta_value ) {
 	global $wpdb;
 
 	$meta_key = stripslashes($meta_key);
-
-	if ( is_protected_meta( $meta_key ) )
-		return false;
 
 	if ( '' === trim( $meta_value ) )
 		return false;

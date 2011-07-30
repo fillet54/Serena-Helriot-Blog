@@ -226,6 +226,7 @@ input.small-text {
 	padding: 2px;
 	height: 2em;
 	font-size: 12px;
+	max-width: 100%;
 }
 
 #wpcontent option {
@@ -3304,6 +3305,10 @@ abbr.required {
 /*------------------------------------------------------------------------------
   14.1 - Media Uploader
 ------------------------------------------------------------------------------*/
+
+div.plupload input {
+	cursor: pointer;
+}
 
 .find-box {
 	width: 500px;

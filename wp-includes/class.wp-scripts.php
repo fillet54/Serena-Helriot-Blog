@@ -78,10 +78,10 @@ class WP_Scripts extends WP_Dependencies {
 			return $output;
 
 		echo "<script type='text/javascript'>\n";
-		echo "/* <![CDATA[ */\n"; // not needed in HTML 5
+		echo "/* <![CDATA[ */\n"; // CDATA is not needed for HTML 5
 		echo $output;
-		echo "\n/* ]]> */";
-		echo "\n</script>\n";
+		echo "/* ]]> */\n";
+		echo "</script>\n";
 
 		return true;
 	}
@@ -173,7 +173,11 @@ class WP_Scripts extends WP_Dependencies {
 	}
 
 	function set_group( $handle, $recursion, $group = false ) {
-		$grp = (int) $this->get_data( $handle, 'group' );
+
+		if ( $this->registered[$handle]->args === 1 )
+			$grp = 1;
+		else
+			$grp = (int) $this->get_data( $handle, 'group' );
 
 		if ( false !== $group && $grp > $group )
 			$grp = $group;

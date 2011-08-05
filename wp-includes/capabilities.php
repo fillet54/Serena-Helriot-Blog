@@ -412,28 +412,6 @@ class WP_User {
 	var $allcaps = array();
 
 	/**
-	 * First name of the user.
-	 *
-	 * Created to prevent notices.
-	 *
-	 * @since 2.7.0
-	 * @access public
-	 * @var string
-	 */
-	var $first_name = '';
-
-	/**
-	 * Last name of the user.
-	 *
-	 * Created to prevent notices.
-	 *
-	 * @since 2.7.0
-	 * @access public
-	 * @var string
-	 */
-	var $last_name = '';
-
-	/**
 	 * The filter context applied to user data fields.
 	 *
 	 * @since 2.9.0
@@ -469,7 +447,7 @@ class WP_User {
 		if ( ! empty( $id ) )
 			$this->data = get_userdata( $id );
 		else
-			$this->data = get_userdatabylogin( $name );
+			$this->data = get_user_by('login', $name );
 
 		if ( empty( $this->data->ID ) )
 			return;

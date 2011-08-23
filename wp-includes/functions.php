@@ -569,11 +569,10 @@ function update_option( $option, $newvalue ) {
  * it will be serialized before it is inserted into the database. Remember,
  * resources can not be serialized or added as an option.
  *
- * You can create options without values and then add values later. Does not
- * check whether the option has already been added, but does check that you
+ * You can create options without values and then update the values later.
+ * Existing options will not be updated and checks are performed to ensure that you
  * aren't adding a protected WordPress option. Care should be taken to not name
- * options the same as the ones which are protected and to not add options
- * that were already added.
+ * options the same as the ones which are protected.
  *
  * @package WordPress
  * @subpackage Option
@@ -3775,6 +3774,8 @@ function get_site_option( $option, $default = false, $use_cache = true ) {
 /**
  * Add a new site option.
  *
+ * Existing options will not be updated. Note that prior to 3.3 this wasn't the case.
+ *
  * @see add_option()
  * @package WordPress
  * @subpackage Option
@@ -3798,22 +3799,24 @@ function add_site_option( $option, $value ) {
 	} else {
 		$cache_key = "{$wpdb->siteid}:$option";
 
-		if ( $wpdb->get_row( $wpdb->prepare( "SELECT meta_value FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", $option, $wpdb->siteid ) ) )
-			return update_site_option( $option, $value );
+		if ( false !== get_site_option( $option ) )
+			return false;
 
 		$value = sanitize_option( $option, $value );
 		wp_cache_set( $cache_key, $value, 'site-options' );
 
 		$_value = $value;
-		$value = maybe_serialize($value);
+		$value = maybe_serialize( $value );
 		$result = $wpdb->insert( $wpdb->sitemeta, array('site_id' => $wpdb->siteid, 'meta_key' => $option, 'meta_value' => $value ) );
 		$value = $_value;
 	}
 
-	do_action( "add_site_option_{$option}", $option, $value );
-	do_action( "add_site_option", $option, $value );
-
-	return $result;
+	if ( $result ) {
+		do_action( "add_site_option_{$option}", $option, $value );
+		do_action( "add_site_option", $option, $value );
+		return true;
+	}
+	return false;
 }
 
 /**
@@ -3883,14 +3886,14 @@ function update_site_option( $option, $value ) {
 	if ( $value === $oldvalue )
 		return false;
 
+	if ( false === $oldvalue )
+		return add_site_option( $option, $value );
+
 	if ( !is_multisite() ) {
 		$result = update_option( $option, $value );
 	} else {
-		$cache_key = "{$wpdb->siteid}:$option";
-
-		if ( $value && !$wpdb->get_row( $wpdb->prepare( "SELECT meta_value FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", $option, $wpdb->siteid ) ) )
-			return add_site_option( $option, $value );
 		$value = sanitize_option( $option, $value );
+		$cache_key = "{$wpdb->siteid}:$option";
 		wp_cache_set( $cache_key, $value, 'site-options' );
 
 		$_value = $value;

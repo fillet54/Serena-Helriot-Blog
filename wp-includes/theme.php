@@ -1246,7 +1246,11 @@ function preview_theme_ob_filter_callback( $matches ) {
  * @param string $stylesheet Stylesheet name.
  */
 function switch_theme($template, $stylesheet) {
-	global $wp_theme_directories;
+	global $wp_theme_directories, $sidebars_widgets;
+
+	if ( ! is_array( $sidebars_widgets ) )
+		$sidebars_widgets = wp_get_sidebars_widgets();
+	set_theme_mod( 'sidebars_widgets', array( 'time' => time(), 'data' => $sidebars_widgets ) );
 
 	$old_theme = get_current_theme();
 
@@ -1989,4 +1993,14 @@ function _delete_attachment_theme_mod( $id ) {
 
 add_action( 'delete_attachment', '_delete_attachment_theme_mod' );
 
-?>
+/**
+ * Checks if a theme has been changed and runs 'after_theme_change' hook on the next WP load
+ *
+ * @since 3.3
+ */   
+function check_theme_switched() {
+	if ( false !== ( $old_theme = get_option( 'theme_switched' ) ) && !empty( $old_theme ) ) {
+		do_action( 'after_theme_change', $old_theme );		
+		update_option( 'theme_switched', false );
+	}
+}

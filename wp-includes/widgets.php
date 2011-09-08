@@ -1194,29 +1194,30 @@ function _get_widget_id_base($id) {
 	return preg_replace( '/-[0-9]+$/', '', $id );
 }
 
-function check_theme_switched() {
-	if ( false !== ( $old_theme = get_option( 'theme_switched' ) ) && !empty( $old_theme ) ) {
-		global $sidebars_widgets;
+/**
+ * Handle sidebars config after theme change
+ *
+ * @access private
+ * @since 3.3
+ */  
+function _wp_sidebars_changed() {
+	global $sidebars_widgets;
 
-		if ( ! is_array( $sidebars_widgets ) )
-			$sidebars_widgets = wp_get_sidebars_widgets();
+	if ( ! is_array( $sidebars_widgets ) )
+		$sidebars_widgets = wp_get_sidebars_widgets();
 
-		$key = md5( $old_theme );
-		// Store widgets for 1 week so we can restore if needed
-		set_transient( 'old_widgets_' . $key, $sidebars_widgets, 604800 );
-
-		retrieve_widgets();
-		update_option( 'theme_switched', false );
-	}
+	retrieve_widgets();
 }
 
 // look for "lost" widgets, this has to run at least on each theme change
 function retrieve_widgets() {
 	global $wp_registered_widget_updates, $wp_registered_sidebars, $sidebars_widgets, $wp_registered_widgets;
 
-	$key = md5( get_current_theme() );
-	if ( false !== ( $_sidebars_widgets = get_transient( "old_widgets_{$key}" ) ) ) {
-		delete_transient( "old_widgets_{$key}" );
+	$old_sidebars_widgets = get_theme_mod( 'sidebars_widgets' );
+	if ( is_array( $old_sidebars_widgets ) ) {
+		// time() that sidebars were stored is in $old_sidebars_widgets['time']
+		$_sidebars_widgets = $old_sidebars_widgets['data'];
+		remove_theme_mod( 'sidebars_widgets' );
 	} else {
 		if ( ! is_array( $sidebars_widgets ) )
 			$sidebars_widgets = wp_get_sidebars_widgets();

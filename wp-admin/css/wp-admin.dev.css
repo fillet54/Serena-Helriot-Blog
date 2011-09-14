@@ -215,13 +215,10 @@ TABLE OF CONTENTS:
 }
 
 .hidden,
-.js .closed .inside {
-	display: none;
-}
-
+.js .closed .inside,
 .js .hide-if-js,
 .no-js .hide-if-no-js {
-	display: none !important;
+	display: none;
 }
 
 /* include margin and padding in the width calculation of input and textarea */
@@ -444,6 +441,7 @@ code {
 	border-style: solid;
 	border-spacing: 0;
 	width: 100%;
+	max-width: 2000px;
 	clear: both;
 	margin: 0;
 	-moz-border-radius: 3px;
@@ -2098,7 +2096,7 @@ body.admin-bar #adminmenu {
 }
 
 .postbox-container {
-	float: left;
+	float: none;
 }
 
 #postbox-container-1 .meta-box-sortables:first-child,
@@ -2360,6 +2358,7 @@ th.asc:hover span.sorting-indicator {
 .tablenav {
 	clear: both;
 	height: 30px;
+	max-width: 2000px;
 	margin: 6px 0 4px;
 	vertical-align: middle;
 }
@@ -2434,6 +2433,10 @@ th.asc:hover span.sorting-indicator {
 }
 .screen-per-page {
 	width: 3em;
+}
+
+#posts-filter {
+	max-width: 2000px;
 }
 
 #posts-filter fieldset {
@@ -2983,6 +2986,10 @@ div.tabs-panel-inactive {
 .wp-tab-bar li {
 	display: inline;
 	line-height: 1.35em;
+}
+
+#side-sortables .category-tabs li.hide-if-no-js {
+ 	display: none;
 }
 
 #side-sortables .category-tabs a,
@@ -4920,6 +4927,7 @@ td.post-title p, td.plugin-title p {
 
 .tool-box {
 	margin: 15px 0 35px;
+	max-width: 650px;
 }
 .tool-box .buttons {
 	margin: 15px 0;
@@ -7636,4 +7644,83 @@ a.widget-control-edit {
 .widgets_access .sidebar-name,
 .widgets_access .widget .widget-top {
 	cursor: default;
+}
+
+/* =Media Queries
+-------------------------------------------------------------- */
+
+@media only screen and (max-width: 768px) {
+	/* categories */
+	#col-left{
+	width: 100%;
+	}
+
+	#col-right{
+	width: 100%;
+	} 
+}
+
+@media only screen and (min-width: 769px) {
+	/* categories */
+	#col-left{
+	width: 25%;
+	}
+
+	#col-right{
+	width: 75%;
+	}  
+
+	.widefat{
+	max-width: 500px;
+	}
+}
+
+@media only screen and (max-width: 860px) {
+
+	/* categories */
+	#col-left{
+	width: 25%;
+	}
+
+	#col-right{
+	width: 75%;
+	} 
+}
+
+@media only screen and (min-width: 980px) {
+
+	/* categories */
+	#col-left{
+	width: 25%;
+	}
+
+	#col-right{
+	width: 75%;
+	} 
+}
+
+
+@media only screen and (max-width: 768px) {
+	/* categories */
+	#col-left{
+	width: 100%;
+	}
+
+	#col-right{
+	width: 100%;
+	} 
+
+	.form-field input, .form-field textarea{
+	width: 99%;
+	}
+
+	.form-wrap .form-field{
+	padding:0;
+	}
+
+	/* users */
+	#profile-page .form-table textarea{
+	max-width: 400px;
+	width: auto;
+	}
 }

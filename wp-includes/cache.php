@@ -243,15 +243,6 @@ class WP_Object_Cache {
 	var $cache = array ();
 
 	/**
-	 * Cache objects that do not exist in the cache
-	 *
-	 * @var array
-	 * @access private
-	 * @since 2.0.0
-	 */
-	var $non_existent_objects = array ();
-
-	/**
 	 * The amount of times the cache data was already stored in the cache.
 	 *
 	 * @since 2.5.0
@@ -294,6 +285,9 @@ class WP_Object_Cache {
 	 * @return bool False if cache key and group already exist, true on success
 	 */
 	function add( $key, $data, $group = 'default', $expire = '' ) {
+		if ( wp_suspend_cache_addition() )
+			return false;
+
 		if ( empty ($group) )
 			$group = 'default';
 
@@ -351,9 +345,6 @@ class WP_Object_Cache {
 	 * to false, then nothing will happen. The $force parameter is set to false
 	 * by default.
 	 *
-	 * On success the group and the id will be added to the
-	 * $non_existent_objects property in the class.
-	 *
 	 * @since 2.0.0
 	 *
 	 * @param int|string $key What the contents in the cache are called
@@ -370,7 +361,6 @@ class WP_Object_Cache {
 			return false;
 
 		unset ($this->cache[$group][$key]);
-		$this->non_existent_objects[$group][$key] = true;
 		return true;
 	}
 
@@ -394,11 +384,7 @@ class WP_Object_Cache {
 	 * key in the cache group. If the cache is hit (success) then the contents
 	 * are returned.
 	 *
-	 * On failure, the $non_existent_objects property is checked and if the
-	 * cache group and key exist in there the cache misses will not be
-	 * incremented. If not in the nonexistent objects property, then the cache
-	 * misses will be incremented and the cache group and key will be added to
-	 * the nonexistent objects.
+	 * On failure, the number of cache misses will be incremented.
 	 *
 	 * @since 2.0.0
 	 *
@@ -420,10 +406,6 @@ class WP_Object_Cache {
 				return $this->cache[$group][$key];
 		}
 
-		if ( isset ($this->non_existent_objects[$group][$key]) )
-			return false;
-
-		$this->non_existent_objects[$group][$key] = true;
 		$this->cache_misses += 1;
 		return false;
 	}
@@ -521,10 +503,6 @@ class WP_Object_Cache {
 			$data = clone $data;
 
 		$this->cache[$group][$key] = $data;
-
-		if ( isset($this->non_existent_objects[$group][$key]) )
-			unset ($this->non_existent_objects[$group][$key]);
-
 		return true;
 	}
 

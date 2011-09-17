@@ -24,25 +24,25 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
    Links
    ========================================================================== */
 
-a { color: #06c; }
-a:visited { color: #06c; }
-a:focus { color: #09f; outline: thin dotted; }
-a:hover, a:active { color: #09f; outline: 0; }
+a { color: #10c; }
+a:visited { color: #10c; }
+a:focus { color: #7a41c8; outline: thin dotted; }
+a:hover, a:active { color: #7a41c8; outline: 0; }
 a:active, input.button:active { outline: 0; position: relative; top: 1px; }
 
 .button, #post-nav a, #comments-nav a {
 	display: inline-block;
-	background: #06c;
+	background: #10c;
 	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
 	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
 	background-image: linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));		
-	-moz-border-radius: 6px; 
-	-webkit-border-radius: 6px;
-	border-radius: 6px;
+	-moz-border-radius: 0px 6px 6px 0px; 
+	-webkit-border-radius: 0px 6px 6px 0px;
+	border-radius: 0px 6px 6px 0px;
 	color: #fff;
 	border: none;
-	padding: 8px 16px;
+	padding: 7px 16px;
 	cursor: pointer;
 	text-decoration: none;
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.15);
@@ -54,7 +54,7 @@ a:active, input.button:active { outline: 0; position: relative; top: 1px; }
 	-webkit-appearance: none;
 }
 .button:hover, #post-nav a:hover, #comments-nav a:hover { 
-	background: #09f; 
+	background: #7a41c8; 
 	color: #fff; 
 }
 
@@ -163,7 +163,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 #logo { float: left; width: 300px; height: 75px; margin: 0 0 16px; padding: 0; }
 
 #nav-main ul { 
-	background: #06c;
+	background: #10c;
 	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
 	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
@@ -194,7 +194,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 #nav-main ul li.current-menu-parent > a, 
 #nav-main ul li.current-menu-ancestor > a, 
 #nav-main ul li:hover > a { 
-	color: #73c8ff; 
+	color: #d287fd; 
 }
 
 #nav-main ul ul { 
@@ -223,7 +223,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 #nav-main ul ul li.current-menu-parent > a, 
 #nav-main ul ul li.current-menu-ancestor > a, 
 #nav-main ul ul li:hover > a {
-	color: #06c; 
+	color: #10c; 
 }
 
 #nav-main ul ul ul { left: 100%; top: 0; }
@@ -511,7 +511,7 @@ img.ui-datepicker-trigger { vertical-align: middle; }
    Search form
    ========================================================================== */
   
-#searchform #s { padding: 5px; }
+#searchform #s { padding: 6px; -moz-border-radius: 6px 0px 0px 6px; -webkit-border-radius: 6px 0px 0px 6px; border-radius: 6px 0px 0px 6px; }
 
 
 

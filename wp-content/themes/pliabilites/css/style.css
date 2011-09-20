@@ -24,19 +24,19 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
    Links
    ========================================================================== */
 
-a { color: #10c; }
-a:visited { color: #10c; }
+a { color: #50c; }
+a:visited { color: #50c; }
 a:focus { color: #7a41c8; outline: thin dotted; }
 a:hover, a:active { color: #7a41c8; outline: 0; }
 a:active, input.button:active { outline: 0; position: relative; top: 1px; }
 
 .button, #post-nav a, #comments-nav a {
 	display: inline-block;
-	background: #10c;
-	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-	background-image: linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));		
+	background: #50c;
+	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.0));
+	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.0));
+	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.0));
+	background-image: linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.0));		
 	-moz-border-radius: 0px 6px 6px 0px; 
 	-webkit-border-radius: 0px 6px 6px 0px;
 	border-radius: 0px 6px 6px 0px;
@@ -160,23 +160,56 @@ table { border-collapse: collapse; border-spacing: 0; }
 #banner { position: relative; margin: 16px auto 0; z-index: 1000; }
 #banner .container { padding: 0; }
 
-#logo { float: left; width: 300px; height: 75px; margin: 0 0 16px; padding: 0; }
+#banner_stripes {
+   height: 120px;
+   background-color: #222;
+   background-image: -moz-linear-gradient(0, rgba(255, 255, 255, 0.07) 50%, transparent 50%), 
+                     -moz-linear-gradient(0, rgba(255, 255, 255, 0.13) 50%, transparent 50%),
+                     -moz-linear-gradient(0, rgba(255, 255, 255, 0.17) 50%, transparent 50%),
+                     -moz-linear-gradient(0, rgba(255, 255, 255, 0.19) 50%);
+   background-image: -webkit-gradient(linear,0 0,100% 0, color-stop(.5, rgba(255, 255, 255, 0.05)), color-stop(.5, transparent), to(transparent)),
+                     -webkit-gradient(linear,0 0,100% 0, color-stop(.5, rgba(255, 255, 255, 0.11)), color-stop(.5, transparent), to(transparent)), 
+                     -webkit-gradient(linear,0 0,100% 0, color-stop(.5, rgba(255, 255, 255, 0.15)), color-stop(.5, transparent), to(transparent)), 
+                     -webkit-gradient(linear,0 0,100% 0, color-stop(.5, rgba(255, 255, 255, 0.17)), color-stop(.5, transparent), to(transparent));
+   background-size: 13px, 29px, 37px, 53px;
+}
+
+#banner_title {
+   color: #fff;
+   font-size: 70px;
+   letter-spacing: -1px;
+   font-weight: 300;
+   font-family: 'Changa One', sans-serif;
+   text-shadow: 0.05em 0.05em 0.05em #111;
+   text-transform: uppercase;
+   margin-left: 10px;
+}
+
+#banner_description {
+   color: #fff;
+   font-family: Comfortaa, arial;
+   font-size: 18px;
+   letter-spacing: 5px;
+   word-spacing: 15px;
+   margin-left: 10px;
+   margin-top: -10px;
+}
 
 #nav-main ul { 
-	background: #10c;
-	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-	background-image: linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));	
+	background: #6b16cc;
+	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.0));
+	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.0));
+	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.0));
+	background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.0));	
 	position: relative; 
 	list-style: none; 
 	margin: 0 0 16px 0; 
 	padding: 0;
 	float: left; 
 	width: 100%;
-	-moz-border-radius: 6px; 
-	-webkit-border-radius: 6px; 
-	border-radius: 6px;
+   border-style: solid;
+   border-color: #333;
+   border-width: 1px;
 }
 #nav-main ul li { float: left; margin: 0; *zoom: 1; } 
 #nav-main ul li:hover { position: relative; }
@@ -223,7 +256,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 #nav-main ul ul li.current-menu-parent > a, 
 #nav-main ul ul li.current-menu-ancestor > a, 
 #nav-main ul ul li:hover > a {
-	color: #10c; 
+	color: #50c; 
 }
 
 #nav-main ul ul ul { left: 100%; top: 0; }
@@ -247,7 +280,9 @@ table { border-collapse: collapse; border-spacing: 0; }
    Main content area
    ========================================================================== */
    
-#main { position: relative; }
+#main { 
+   position: relative;
+}
 #main .container { padding: 0; }   
 
 /* =============================================================================

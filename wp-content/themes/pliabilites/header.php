@@ -12,6 +12,9 @@
 
 	<?php roots_stylesheets(); ?>
 	
+   <link href='http://fonts.googleapis.com/css?family=Changa+One' rel='stylesheet' type='text/css'> 
+   <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 
 	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.0.min.js"></script>
@@ -33,10 +36,10 @@
 		<header id="banner" class="<?php global $roots_options; echo $roots_options['container_class']; ?>" role="banner">
 			<?php roots_header_inside(); ?>
 			<div class="container">
-	
-				<a id="logo" href="<?php echo home_url(); ?>/">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" width="300" height="75" alt="<?php bloginfo('name'); ?>">
-				</a>
+            <div id="banner_stripes">
+               <div id="banner_title"><?php bloginfo('name'); ?></div>
+               <div id="banner_description"><?php bloginfo('description'); ?></div>  
+            </div>
 				
 				<?php if ($roots_options['clean_menu']) { ?>
 					<nav id="nav-main" role="navigation">

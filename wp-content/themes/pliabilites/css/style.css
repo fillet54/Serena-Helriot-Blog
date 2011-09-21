@@ -42,7 +42,7 @@ a:active, input.button:active { outline: 0; position: relative; top: 1px; }
 	border-radius: 0px 6px 6px 0px;
 	color: #fff;
 	border: none;
-	padding: 7px 16px;
+	padding: 4px 16px;
 	cursor: pointer;
 	text-decoration: none;
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.15);
@@ -52,6 +52,7 @@ a:active, input.button:active { outline: 0; position: relative; top: 1px; }
 	-webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2), 1px 1px 3px rgba(0, 0, 0, 0.2) inset;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2), 1px 1px 3px rgba(0, 0, 0, 0.2) inset;
 	-webkit-appearance: none;
+   font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 .button:hover, #post-nav a:hover, #comments-nav a:hover { 
 	background: #7a41c8; 
@@ -159,41 +160,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 #banner { position: relative; margin: 16px auto 0; z-index: 1000; }
 #banner .container { padding: 0; }
-
-#banner_stripes {
-   height: 120px;
-   background-color: #222;
-   background-image: -moz-linear-gradient(0, rgba(255, 255, 255, 0.07) 50%, transparent 50%), 
-                     -moz-linear-gradient(0, rgba(255, 255, 255, 0.13) 50%, transparent 50%),
-                     -moz-linear-gradient(0, rgba(255, 255, 255, 0.17) 50%, transparent 50%),
-                     -moz-linear-gradient(0, rgba(255, 255, 255, 0.19) 50%);
-   background-image: -webkit-gradient(linear,0 0,100% 0, color-stop(.5, rgba(255, 255, 255, 0.05)), color-stop(.5, transparent), to(transparent)),
-                     -webkit-gradient(linear,0 0,100% 0, color-stop(.5, rgba(255, 255, 255, 0.11)), color-stop(.5, transparent), to(transparent)), 
-                     -webkit-gradient(linear,0 0,100% 0, color-stop(.5, rgba(255, 255, 255, 0.15)), color-stop(.5, transparent), to(transparent)), 
-                     -webkit-gradient(linear,0 0,100% 0, color-stop(.5, rgba(255, 255, 255, 0.17)), color-stop(.5, transparent), to(transparent));
-   background-size: 13px, 29px, 37px, 53px;
-}
-
-#banner_title {
-   color: #fff;
-   font-size: 70px;
-   letter-spacing: -1px;
-   font-weight: 300;
-   font-family: 'Changa One', sans-serif;
-   text-shadow: 0.05em 0.05em 0.05em #111;
-   text-transform: uppercase;
-   margin-left: 10px;
-}
-
-#banner_description {
-   color: #fff;
-   font-family: Comfortaa, arial;
-   font-size: 18px;
-   letter-spacing: 5px;
-   word-spacing: 15px;
-   margin-left: 10px;
-   margin-top: -10px;
-}
+#banner img { margin: 0px; border-style: solid; border-width: 1px 1px 0px 1px; border-color: #444; font-size: 0pt; display: block; }
 
 #nav-main ul { 
 	background: #6b16cc;
@@ -216,8 +183,9 @@ table { border-collapse: collapse; border-spacing: 0; }
 #nav-main ul li a { 
 	text-decoration: none; 
 	display: block; 
-	font-size: 14px; 
-	padding: 8px 16px; 
+	font-size: 16px; 
+   font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	padding: 4px 16px; 
 	color: #fff; 
 	margin: 0; 
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.15);

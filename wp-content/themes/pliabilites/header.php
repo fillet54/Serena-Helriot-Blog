@@ -14,6 +14,8 @@
 	
    <link href='http://fonts.googleapis.com/css?family=Changa+One' rel='stylesheet' type='text/css'> 
    <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
 
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 
@@ -35,11 +37,10 @@
 	<?php roots_header_before(); ?>
 		<header id="banner" class="<?php global $roots_options; echo $roots_options['container_class']; ?>" role="banner">
 			<?php roots_header_inside(); ?>
-			<div class="container">
-            <div id="banner_stripes">
-               <div id="banner_title"><?php bloginfo('name'); ?></div>
-               <div id="banner_description"><?php bloginfo('description'); ?></div>  
-            </div>
+         <div class="container">
+         
+            <img src="<?php echo get_template_directory_uri(); ?>/img/banner.png" width="950" height="125" alt="<?php bloginfo('name'); ?>" usemap="#bannermap">
+            <map name="bannermap"><area shape="rect" coords="0,0,390,70" alt="<?php bloginfo('name'); ?>" href="<?php echo home_url(); ?>"/></map>
 				
 				<?php if ($roots_options['clean_menu']) { ?>
 					<nav id="nav-main" role="navigation">

@@ -257,7 +257,16 @@ table { border-collapse: collapse; border-spacing: 0; }
    Sidebar
    ========================================================================== */
    
-#sidebar { position: relative; }
+#sidebar { 
+   padding: 10px 19px;
+   position: relative;
+   border-style: solid;
+   border-width: 1px;
+   border-color: #ccc;
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px; 
+	border-radius: 10px;
+}
 #sidebar .container { width: auto; padding: 0; }
 #sidebar .widget { clear: both; margin-bottom: 1.5em; }
 #sidebar .widget .gform_wrapper ul { padding: 0; list-style-type: none; }
@@ -267,14 +276,39 @@ table { border-collapse: collapse; border-spacing: 0; }
    Posts
    ========================================================================== */
    
-.hentry header { margin-bottom: 1.5em; }
-.hentry h1 { line-height: 1.2em; margin-bottom: 0.2em; }
+.hentry header { 
+   font-family: "Times New Roman";
+   margin-bottom: 1.5em;
+   border-style: solid;
+   border-bottom-width: 1px;
+   border-color: #ccc;
+   color: #222;
+ }
+.hentry h1 { 
+   line-height: 1.2em; 
+   margin-bottom: 0.2em; 
+   font-family: "Times New Roman"; 
+   letter-spacing: -3px; 
+}
+.hentry .month { font-size: 1.2em; }
+.hentry .year { display: block; letter-spacing: 8px;}
+
 .hentry h2:first-child { line-height: 1.2em; margin-bottom: 0; }
 .hentry h2 a { text-decoration: none; }
 .hentry time { display: block; font-size: 1.2em; position: relative; }
 .hentry p.byline { }
+.hentry .post-date { font-size: 1.2em; padding: 5px; display: block; float: right; }
+article.post {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #ccc;
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px; 
+	border-radius: 10px;
+   padding: 0px 10px;
+   margin-bottom: 20px; 
 
-
+}
 /* =============================================================================
    Post and comment navigation
    ========================================================================== */
@@ -588,3 +622,4 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 	p, h2, h3 { orphans: 3; widows: 3; }
 	h2, h3{ page-break-after: avoid; }
 }
+

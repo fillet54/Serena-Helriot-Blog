@@ -1,2 +1,4 @@
 local-config.php
 .htaccess
+*.swp
+

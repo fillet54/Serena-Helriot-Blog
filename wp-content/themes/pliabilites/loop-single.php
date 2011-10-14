@@ -4,16 +4,19 @@
 		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 		<?php roots_post_inside_before(); ?>
 			<header>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-				<time class="updated" datetime="<?php the_time('c'); ?>" pubdate><?php printf(__('Posted on %s at %s.', 'roots'), get_the_time('l, F jS, Y'),get_the_time())?></time>
-				<p class="byline author vcard"><?php _e('Written by', 'roots'); ?> <?php the_author_posts_link(); ?></p>			</header>
-			<div class="entry-content">
-				<?php the_content(); ?>
-			</div>
-			<footer>
-				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>' )); ?>
-				<p><?php the_tags(); ?></p>
-			</footer>
+            <div class="post-date">
+               <span class="month"><?php echo get_the_time('M'); ?></span>
+               <span class="day"><?php echo get_the_time('d'); ?></span>
+               <span class="year"><?php echo get_the_time('Y'); ?></span>
+            </div>
+            <h1><?php the_title(); ?></h1>
+         </header>
+			<?php the_content(); ?>
+         <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>' )); ?>
+         <footer>
+            <span class="footer-categories">Posted in <ul><?php pliabilities_list_post_categories($post->ID);?></ul></span>
+            <span class="footer-comments"><a href="<?php echo get_comments_link(); ?>">Comments (<?php echo get_comments_number(); ?>)</a></span>
+         </footer>
 			<?php comments_template(); ?>
 			<?php roots_post_inside_after(); ?>		
 		</article>

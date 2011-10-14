@@ -84,4 +84,16 @@ function roots_author_link($link) {
 
 add_filter('the_author_posts_link', 'roots_author_link');
 
+function pliabilities_list_post_categories ($post_id) {
+   
+   $post_categories = wp_get_post_categories( $post_id );
+   $cats = array();
+      
+   foreach($post_categories as $c){
+      $cat = get_category( $c );
+      $link = get_category_link($c);
+
+      echo "<li><a href='".$link."'>".$cat->name."</a></li>";
+   }
+}
 ?>

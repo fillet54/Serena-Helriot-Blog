@@ -11,8 +11,12 @@
             </div>
             <h1><?php the_title(); ?></h1>
          </header>
-			   <?php the_content(); ?>
-			   <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>' )); ?>
+			<?php the_content(); ?>
+         <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>' )); ?>
+         <footer>
+            <span class="footer-categories">Posted in <ul><?php pliabilities_list_post_categories($post->ID);?></ul></span>
+            <span class="footer-comments"><a href="<?php echo get_comments_link(); ?>">Comments (<?php echo get_comments_number(); ?>)</a></span>
+         </footer>
             <?php roots_post_inside_after(); ?>
       </article>
 	<?php roots_post_after(); ?>

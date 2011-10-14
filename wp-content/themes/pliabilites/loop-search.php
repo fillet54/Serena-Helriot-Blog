@@ -11,10 +11,14 @@
 	<?php roots_post_before(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php roots_post_inside_before(); ?>
-			<header>
-				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-				<time pubdate datetime="<?php the_time('c'); ?>"><?php printf(__('Posted on %s at %s.', 'roots'), get_the_time('l, F jS, Y'), get_the_time()); ?></time>
-        <p class="byline author vcard"><?php _e('Written by', 'roots'); ?> <?php the_author_posts_link(); ?></p>
+         <header>
+            <div class="post-date">
+               <span class="month"><?php echo get_the_time('M'); ?></span>
+               <span class="day"><?php echo get_the_time('d'); ?></span>
+               <span class="year"><?php echo get_the_time('Y'); ?></span>
+            </div>
+ 
+				<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 			</header>
 			<div class="entry-content">
 				<?php the_excerpt(); ?>

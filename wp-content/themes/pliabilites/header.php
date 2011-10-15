@@ -12,17 +12,13 @@
 
 	<?php roots_stylesheets(); ?>
 	
-   <link href='http://fonts.googleapis.com/css?family=Changa+One' rel='stylesheet' type='text/css'> 
-   <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
-   <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
-   <link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
-
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 
 	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.0.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/respond.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+   <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.validate.min.js"></script>
 
 	<?php wp_head(); ?>
 	<?php roots_head(); ?>

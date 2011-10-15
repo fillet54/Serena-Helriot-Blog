@@ -388,6 +388,9 @@ li.comment article header {
 li.comment article header a {
    color: white
 }
+li.comment p {
+   margin: 10px;
+}
 img.avatar{
    margin: 0px 10px;
 }

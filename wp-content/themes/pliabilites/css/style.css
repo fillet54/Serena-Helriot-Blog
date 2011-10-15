@@ -270,8 +270,25 @@ table { border-collapse: collapse; border-spacing: 0; }
 #sidebar .container { width: auto; padding: 0; }
 #sidebar .widget { clear: both; margin-bottom: 1.5em; }
 #sidebar .widget .gform_wrapper ul { padding: 0; list-style-type: none; }
-
-
+#sidebar .widget {
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   color: #444;
+   font-weight: 300;
+   line-height: 1.625em;
+   letter-spacing: 1.25px;
+}
+#sidebar .widget h3 {
+   font-size: 14px;
+   color: #444;
+   margin-bottom: 0px;
+}
+#sidebar .widget ul {
+   margin-top: 1px;
+}
+#sidebar .widget ul li a:hover {
+   color: #6B16CC;
+   font-weight: bold;
+}
 /* =============================================================================
    Posts
    ========================================================================== */

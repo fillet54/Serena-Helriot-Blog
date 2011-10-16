@@ -400,6 +400,14 @@ footer span.footer-comments {
    float: right;
 }
 
+.poem  {
+   text-align: center;
+}
+
+.poem p {
+   text-indent: 0px;
+   margin-bottom: 26px;
+}
 /* =============================================================================
    Post and comment navigation
    ========================================================================== */

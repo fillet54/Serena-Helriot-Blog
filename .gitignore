@@ -1,0 +1,4 @@
+local-config.php
+.htaccess
+*.swp
+wp-content/backup-db

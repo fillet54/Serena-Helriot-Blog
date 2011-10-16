@@ -31,6 +31,27 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
          url('fonts/Tex-Gyre-Schola/texgyreschola-regular-webfont.svg#TeXGyreScholaRegular') format('svg');
     font-weight: normal;
     font-style: normal;
+}
+@font-face {
+    font-family: 'TeXGyreScholaBold';
+    src: url('fonts/Tex-Gyre-Schola/texgyreschola-bold-webfont.eot');
+    src: url('fonts/Tex-Gyre-Schola/texgyreschola-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Tex-Gyre-Schola/texgyreschola-bold-webfont.woff') format('woff'),
+         url('fonts/Tex-Gyre-Schola/texgyreschola-bold-webfont.ttf') format('truetype'),
+         url('fonts/Tex-Gyre-Schola/texgyreschola-bold-webfont.svg#TeXGyreScholaBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'TeXGyreScholaItalic';
+    src: url('fonts/Tex-Gyre-Schola/texgyreschola-italic-webfont.eot');
+    src: url('fonts/Tex-Gyre-Schola/texgyreschola-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Tex-Gyre-Schola/texgyreschola-italic-webfont.woff') format('woff'),
+         url('fonts/Tex-Gyre-Schola/texgyreschola-italic-webfont.ttf') format('truetype'),
+         url('fonts/Tex-Gyre-Schola/texgyreschola-italic-webfont.svg#TeXGyreScholaItalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
 
 }
 /* =============================================================================
@@ -159,7 +180,9 @@ textarea { overflow: auto; vertical-align: top; }
 input:valid, textarea:valid {  }
 input:invalid, textarea:invalid { background-color: #f0dddd; }
 
-
+#submit {
+   font-size: 13px;
+}
 /* =============================================================================
    Tables
    ========================================================================== */
@@ -284,11 +307,10 @@ table { border-collapse: collapse; border-spacing: 0; }
 #sidebar .widget { clear: both; margin-bottom: 1.5em; }
 #sidebar .widget .gform_wrapper ul { padding: 0; list-style-type: none; }
 #sidebar .widget {
-   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font: normal normal normal 19px/25px "TeXGyreScholaRegular","Georgia","Bitstream Charter","Century Schoolbook L","Liberation Serif","Times",serif;
    color: #444;
    font-weight: 300;
    line-height: 1.625em;
-   letter-spacing: 1.25px;
 }
 #sidebar .widget h3 {
    font-size: 14px;
@@ -299,8 +321,8 @@ table { border-collapse: collapse; border-spacing: 0; }
    margin-top: 1px;
 }
 #sidebar .widget ul li a:hover {
+   font: 19px/25px "TeXGyreScholaBold","Georgia","Bitstream Charter","Century Schoolbook L","Liberation Serif","Times",serif;
    color: #6B16CC;
-   font-weight: bold;
 }
 /* =============================================================================
    Posts
@@ -341,12 +363,22 @@ article.post {
 
 }
 article.post p {
-   font: normal normal normal 19px/25px "TeX Gyre Schola","Georgia","Bitstream Charter","Century Schoolbook L","Liberation Serif","Times",serif;
+   font: normal normal normal 19px/25px "TeXGyreScholaRegular","Georgia","Bitstream Charter","Century Schoolbook L","Liberation Serif","Times",serif;
    text-indent: 25px;
    line-height: 26px;
    padding: 0px 20px;
 }
+article.post p strong {
+   font: 19px/25px "TeXGyreScholaBold","Georgia","Bitstream Charter","Century Schoolbook L","Liberation Serif","Times",serif;
+   line-height: 26px;
+}
+article.post p em {
+   font: 19px/25px "TeXGyreScholaItalic","Georgia","Bitstream Charter","Century Schoolbook L","Liberation Serif","Times",serif;
+   line-height: 26px;
+   font-style: italic;
+}
 article.post footer {
+   font: 19px/25px "TeXGyreScholaItalic","Georgia","Bitstream Charter","Century Schoolbook L","Liberation Serif","Times",serif;
    padding: 5px;
    border-style: solid;
    border-top-width: 1px;
@@ -430,7 +462,11 @@ img.avatar{
    margin: 0px 10px;
 }
 #commentform { *display: inline-block; }
-#commentform p { margin-bottom: 1em; }
+#commentform p { 
+   margin-bottom: 1em; 
+   text-indent: 0px; 
+   font: 14px/22px "TeXGyreScholaBold","Georgia","Bitstream Charter","Century Schoolbook L","Liberation Serif","Times",serif;
+}
 #commentform label { display: block; padding: 5px; margin: 0.5em 0.5em 0 0;}
 #commentform label.error { 
    display: block; 
@@ -660,8 +696,8 @@ img.ui-datepicker-trigger { vertical-align: middle; }
    Search form
    ========================================================================== */
   
-#searchform #s { padding: 6px; -moz-border-radius: 6px 0px 0px 6px; -webkit-border-radius: 6px 0px 0px 6px; border-radius: 6px 0px 0px 6px; }
-
+#searchform #s { font-size: 12px; padding: 6px; -moz-border-radius: 6px 0px 0px 6px; -webkit-border-radius: 6px 0px 0px 6px; border-radius: 6px 0px 0px 6px; }
+#searchsubmit { font-size: 13px; }
 
 
 /* =============================================================================

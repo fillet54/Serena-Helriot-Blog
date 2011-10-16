@@ -19,7 +19,20 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
 
+/* =============================================================================
+   Fonts
+   ========================================================================== */
+@font-face {
+    font-family: 'TeXGyreScholaRegular';
+    src: url('fonts/Tex-Gyre-Schola/texgyreschola-regular-webfont.eot');
+    src: url('fonts/Tex-Gyre-Schola/texgyreschola-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Tex-Gyre-Schola/texgyreschola-regular-webfont.woff') format('woff'),
+         url('fonts/Tex-Gyre-Schola/texgyreschola-regular-webfont.ttf') format('truetype'),
+         url('fonts/Tex-Gyre-Schola/texgyreschola-regular-webfont.svg#TeXGyreScholaRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
+}
 /* =============================================================================
    Links
    ========================================================================== */
@@ -327,7 +340,12 @@ article.post {
    margin-bottom: 20px; 
 
 }
-
+article.post p {
+   font: normal normal normal 19px/25px "TeX Gyre Schola","Georgia","Bitstream Charter","Century Schoolbook L","Liberation Serif","Times",serif;
+   text-indent: 25px;
+   line-height: 26px;
+   padding: 0px 20px;
+}
 article.post footer {
    padding: 5px;
    border-style: solid;

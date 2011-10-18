@@ -22,3 +22,9 @@
       </article>
 	<?php roots_post_after(); ?>
 <?php endwhile; // End the loop ?>
+<?php if ($wp_query->max_num_pages > 1) : ?>
+	<nav id="post-nav">
+		<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'roots' ) ); ?></div>
+		<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'roots' ) ); ?></div>
+	</nav>
+<?php endif; ?>

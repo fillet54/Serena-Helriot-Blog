@@ -527,7 +527,15 @@ figure.gallery-item figcaption { display: none; }
 
 #content-info p.copy small { font-size: 1em; }
 
+#post-nav .alignright a{
+	-moz-border-radius: 6px 0px 0px 6px; 
+	-webkit-border-radius: 6px 0px 0px 6px;
+	border-radius: 6px 0px 0px 6px;
+}
 
+#post-nav a {
+   font-size: 19px;
+}
 /* =============================================================================
    Gravity Forms
    ========================================================================== */

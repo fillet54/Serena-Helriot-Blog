@@ -4,7 +4,9 @@ v1.0
 
 Changelog
 
-v1.1 - Copyright notice. 
+v1.02 - Fixed issue with Older/Newer links being duplicated on pages.
+
+v1.01 - Copyright notice. 
      - Corrected italic post footer
      - Archive post layout is now consistent.
      - Update Typography. Specifically Paragraph Spacing and indenting.

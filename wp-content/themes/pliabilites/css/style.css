@@ -524,7 +524,7 @@ figure.gallery-item figcaption { display: none; }
 #content-info ul.menu { margin: 0 0 24px; padding: 0; list-style-type: none; }
 #content-info ul.menu li { display: inline; margin-right: 1em; }
 
-#content-info p.copy small { font-size: 1em; }
+#content-info p.copy small { font-size: 1em; color: #999;}
 
 #post-nav .alignright a{
 	-moz-border-radius: 6px 0px 0px 6px; 

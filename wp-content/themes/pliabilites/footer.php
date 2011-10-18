@@ -11,7 +11,7 @@
 			<div class="container">
 				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Footer") ) : ?>
 				<?php endif; ?>
-				<p class="copy span-24"><small>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></small></p>
+				<p class="copy span-24"><small>Copyright &copy; 2011 Phillip Gomez</small></p>
 			</div>	
 		</footer>
 		<?php roots_footer_after(); ?>	

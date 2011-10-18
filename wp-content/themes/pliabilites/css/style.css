@@ -416,7 +416,15 @@ footer span.footer-comments {
 #post-nav:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden; }
 #post-nav .post-previous { float: left; width: 50%; }
 #post-nav .post-next { float: right; width: 50%; text-align: right; }
-#post-nav .post-next a { float: right; }
+#post-nav .post-next a { 
+   float: right; 
+	-moz-border-radius: 6px 0px 0px 6px; 
+	-webkit-border-radius: 6px 0px 0px 6px;
+	border-radius: 6px 0px 0px 6px;
+}
+#post-nav {
+   font-size: 19px;
+}
 
 #comments-nav { clear: both; margin: 0 0 1.5em 0; *display: inline-block; }
 #comments-nav:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden; }
@@ -526,15 +534,7 @@ figure.gallery-item figcaption { display: none; }
 
 #content-info p.copy small { font-size: 1em; color: #999;}
 
-#post-nav .alignright a{
-	-moz-border-radius: 6px 0px 0px 6px; 
-	-webkit-border-radius: 6px 0px 0px 6px;
-	border-radius: 6px 0px 0px 6px;
-}
 
-#post-nav a {
-   font-size: 19px;
-}
 /* =============================================================================
    Gravity Forms
    ========================================================================== */
